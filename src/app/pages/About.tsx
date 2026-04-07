@@ -8,14 +8,14 @@ export function About() {
   return (
     <div className="bg-[#F8FAFC]">
       {/* Hero Section */}
-      <section className="relative py-20 overflow-hidden bg-gradient-to-br from-blue-50 via-white to-teal-50">
+      <section className="relative py-12 md:py-20 overflow-hidden bg-gradient-to-br from-blue-50 via-white to-teal-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="text-center max-w-4xl mx-auto"
           >
-            <h1 className="text-5xl md:text-6xl font-bold text-[#0F172A] mb-6 leading-tight">
+            <h1 className="text-3xl md:text-6xl font-bold text-[#0F172A] mb-6 leading-tight">
               We Help Businesses
               <span className="block mt-2 bg-gradient-to-r from-[#2563EB] to-[#14B8A6] bg-clip-text text-transparent">
                 Work Smarter, Not Harder

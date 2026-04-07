@@ -52,7 +52,7 @@ export function Home() {
                 <span className="text-sm font-medium text-[#0F172A]">Trusted by 500+ Businesses</span>
               </motion.div>
 
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-[#0F172A] mb-6 leading-tight">
+              <h1 className="text-3xl md:text-6xl lg:text-7xl font-bold text-[#0F172A] mb-6 leading-tight">
                 Automate Your Business
                 <span className="block mt-2 bg-gradient-to-r from-[#2563EB] to-[#14B8A6] bg-clip-text text-transparent">
                   Save Time & Scale Fast

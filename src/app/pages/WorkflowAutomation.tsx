@@ -20,7 +20,7 @@ export function WorkflowAutomation() {
   return (
     <div className="bg-[#F8FAFC]">
       {/* Hero Section */}
-      <section className="relative py-20 overflow-hidden bg-gradient-to-br from-purple-50 via-white to-pink-50">
+      <section className="relative py-12 md:py-20 overflow-hidden bg-gradient-to-br from-purple-50 via-white to-pink-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div
@@ -32,7 +32,7 @@ export function WorkflowAutomation() {
                 <span className="text-sm font-medium text-purple-800">Custom Workflows</span>
               </div>
               
-              <h1 className="text-5xl md:text-6xl font-bold text-[#0F172A] mb-6 leading-tight">
+              <h1 className="text-3xl md:text-6xl font-bold text-[#0F172A] mb-6 leading-tight">
                 Custom Workflow
                 <span className="block mt-2 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
                   Automation Made Easy
@@ -74,7 +74,7 @@ export function WorkflowAutomation() {
       </section>
       
       {/* Features Section */}
-      <section className="py-20 bg-white">
+      <section className="py-12 md:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -132,7 +132,7 @@ export function WorkflowAutomation() {
       </section>
       
       {/* Popular Workflows Section */}
-      <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
+      <section className="py-12 md:py-20 bg-gradient-to-b from-gray-50 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -248,7 +248,7 @@ export function WorkflowAutomation() {
       </section>
       
       {/* Integration Logos Section */}
-      <section className="py-20 bg-white">
+      <section className="py-12 md:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

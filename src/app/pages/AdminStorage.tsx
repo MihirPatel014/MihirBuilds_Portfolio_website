@@ -1,6 +1,7 @@
 /// <reference types="vite/client" />
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import { useWebHaptics } from 'web-haptics/react';
 import { 
   Upload, 
   Trash2, 
@@ -21,6 +22,7 @@ import { toast } from 'sonner';
 import { Button } from '../components/Button';
 
 export function AdminStorage() {
+  const { trigger } = useWebHaptics();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [password, setPassword] = useState('');
   const [items, setItems] = useState<any[]>([]);
@@ -53,9 +55,11 @@ export function AdminStorage() {
       setIsAuthenticated(true);
       localStorage.setItem('admin_storage_auth', 'true');
       toast.success('Access granted');
+      trigger('success');
       fetchItems();
     } else {
       toast.error('Incorrect password');
+      trigger('error');
     }
   };
 
@@ -104,6 +108,7 @@ export function AdminStorage() {
       setItems(updated);
       localStorage.setItem('local_storage_sim', JSON.stringify(updated));
       toast.success('Local asset deleted');
+      trigger('nudge');
       return;
     }
 
@@ -117,9 +122,11 @@ export function AdminStorage() {
 
       if (response.ok) {
         toast.success('Asset deleted from Vercel');
+        trigger('nudge');
         fetchItems();
       } else {
         toast.error('Deletion failed');
+        trigger('error');
       }
     } catch (err) {
       toast.error('Delete error');
@@ -155,6 +162,7 @@ export function AdminStorage() {
         setSelectedFile(null);
         setFormData({ title: '', description: '', tags: '' });
         toast.success('Uploaded to Local Simulation (Works on Vercel)');
+        trigger('success');
       }, 1000);
       return;
     }
@@ -178,11 +186,13 @@ export function AdminStorage() {
 
       if (response.ok) {
         toast.success('Successfully uploaded to Vercel Blob');
+        trigger('success');
         setFormData({ title: '', description: '', tags: '' });
         setSelectedFile(null);
         fetchItems();
       } else {
         toast.error('Vercel API error. Try running: npx vercel dev');
+        trigger('error');
       }
     } catch (err) {
       toast.error('Network error. Switched to Local Simulation.');

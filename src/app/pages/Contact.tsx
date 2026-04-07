@@ -2,6 +2,7 @@ import { motion } from 'motion/react';
 import { Button } from '../components/Button';
 import { Mail, Phone, MapPin, Clock, MessageSquare, Send, ChevronDown, Search } from 'lucide-react';
 import { useState, useRef, useEffect } from 'react';
+import { useWebHaptics } from 'web-haptics/react';
 
 const getFlagEmoji = (countryCode: string) => {
   const codePoints = countryCode
@@ -272,6 +273,7 @@ const COUNTRY_DATA = [
 }));
 
 export function Contact() {
+  const { trigger } = useWebHaptics();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -312,6 +314,7 @@ export function Contact() {
         console.log('No SCRIPT_URL provided. Mocking submission:', formData);
         await new Promise(resolve => setTimeout(resolve, 1500));
         setSubmitted(true);
+        trigger('success');
       } else {
         await fetch(SCRIPT_URL, {
           method: 'POST',
@@ -334,6 +337,7 @@ export function Contact() {
         // With mode: 'no-cors', we cannot read the response, 
         // but if we reach this line, the request was sent successfully.
         setSubmitted(true);
+        trigger('success');
       }
 
       if (submitted) {
@@ -344,6 +348,7 @@ export function Contact() {
       }
     } catch (error) {
       console.error('Error submitting form:', error);
+      trigger('error');
       alert('An error occurred. Please try again.');
     } finally {
       setIsSubmitting(false);
@@ -367,14 +372,14 @@ export function Contact() {
   return (
     <div className="bg-[#F8FAFC]">
       {/* Hero Section */}
-      <section className="relative py-20 overflow-hidden bg-gradient-to-br from-blue-50 via-white to-teal-50">
+      <section className="relative py-12 md:py-20 overflow-hidden bg-gradient-to-br from-blue-50 via-white to-teal-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="text-center max-w-4xl mx-auto"
           >
-            <h1 className="text-5xl md:text-6xl font-bold text-[#0F172A] mb-6 leading-tight">
+            <h1 className="text-3xl md:text-6xl font-bold text-[#0F172A] mb-6 leading-tight">
               Let's Transform
               <span className="block mt-2 bg-gradient-to-r from-[#2563EB] to-[#14B8A6] bg-clip-text text-transparent">
                 Your Business Together
@@ -390,7 +395,7 @@ export function Contact() {
       </section>
 
       {/* Contact Form & Info Section */}
-      <section className="py-20 bg-white">
+      <section className="py-12 md:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Contact Information */}
@@ -452,8 +457,8 @@ export function Contact() {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
             >
-              <div className="bg-white rounded-2xl p-8 shadow-xl border border-gray-100">
-                <h2 className="text-3xl font-bold text-[#0F172A] mb-2">
+              <div className="bg-white rounded-2xl p-5 md:p-8 shadow-xl border border-gray-100 overflow-hidden">
+                <h2 className="text-2xl md:text-3xl font-bold text-[#0F172A] mb-2">
                   Book Your Free Demo
                 </h2>
                 <p className="text-gray-600 mb-8">
@@ -530,17 +535,20 @@ export function Contact() {
                         <label htmlFor="phone" className="block text-sm font-medium text-[#0F172A] mb-2">
                           Phone Number
                         </label>
-                        <div className="relative flex space-x-2" ref={dropdownRef}>
+                        <div className="relative flex space-x-1 md:space-x-2" ref={dropdownRef}>
                           {/* Custom Country Code Dropdown */}
                           <div className="relative">
                             <button
                               type="button"
-                              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                              className="w-24 px-2 py-3 rounded-xl border border-gray-300 focus:border-[#2563EB] focus:ring-2 focus:ring-[#2563EB]/20 outline-none transition-all bg-white flex items-center justify-between"
+                              onClick={() => {
+                                setIsDropdownOpen(!isDropdownOpen);
+                                trigger('nudge');
+                              }}
+                              className="w-20 md:w-24 px-2 py-3 rounded-xl border border-gray-300 focus:border-[#2563EB] focus:ring-2 focus:ring-[#2563EB]/20 outline-none transition-all bg-white flex items-center justify-between"
                             >
                               <span className="flex items-center space-x-1">
-                                <span className="text-lg">{selectedCountry.flag}</span>
-                                <span className="text-sm font-medium">{selectedCountry.code}</span>
+                                <span className="text-base md:text-lg">{selectedCountry.flag}</span>
+                                <span className="text-xs md:text-sm font-medium">{selectedCountry.code}</span>
                               </span>
                               <motion.span
                                 animate={{ rotate: isDropdownOpen ? 180 : 0 }}
@@ -573,6 +581,7 @@ export function Contact() {
                                           setFormData(prev => ({ ...prev, countryCode: item.code }));
                                           setIsDropdownOpen(false);
                                           setCountrySearchQuery('');
+                                          trigger('nudge');
                                         }}
                                         className="w-full px-4 py-3 flex items-center justify-between hover:bg-blue-50 transition-colors border-b border-gray-50 last:border-0 text-left"
                                       >
@@ -599,7 +608,7 @@ export function Contact() {
                             name="phone"
                             value={formData.phone}
                             onChange={handleChange}
-                            className="flex-1 min-w-0 px-4 py-3 rounded-xl border border-gray-300 focus:border-[#2563EB] focus:ring-2 focus:ring-[#2563EB]/20 outline-none transition-all"
+                            className="flex-1 min-w-0 px-3 md:px-4 py-3 rounded-xl border border-gray-300 focus:border-[#2563EB] focus:ring-2 focus:ring-[#2563EB]/20 outline-none transition-all"
                             placeholder="555-123-4567"
                           />
                         </div>

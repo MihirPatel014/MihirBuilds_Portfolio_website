@@ -2,9 +2,11 @@ import { Link, useLocation } from 'react-router';
 import { Menu, X } from 'lucide-react';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import { useWebHaptics } from 'web-haptics/react';
 import { Button } from './Button';
 
 export function Navbar() {
+  const { trigger } = useWebHaptics();
   const location = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -60,7 +62,10 @@ export function Navbar() {
 
           {/* Mobile Menu Button */}
           <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            onClick={() => {
+              setMobileMenuOpen(!mobileMenuOpen);
+              trigger('nudge');
+            }}
             className="lg:hidden p-2 rounded-lg hover:bg-gray-100"
           >
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
