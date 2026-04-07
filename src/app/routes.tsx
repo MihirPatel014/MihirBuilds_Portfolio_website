@@ -6,6 +6,7 @@ import { EmailAutomation } from "./pages/EmailAutomation";
 import { WorkflowAutomation } from "./pages/WorkflowAutomation";
 import { About } from "./pages/About";
 import { Contact } from "./pages/Contact";
+import { AdminStorage } from "./pages/AdminStorage";
 
 export const router = createBrowserRouter([
   {
@@ -18,6 +19,7 @@ export const router = createBrowserRouter([
       { path: "workflow-automation", Component: WorkflowAutomation },
       { path: "about", Component: About },
       { path: "contact", Component: Contact },
+      { path: "admin/storage", Component: AdminStorage },
     ],
   },
 ]);
