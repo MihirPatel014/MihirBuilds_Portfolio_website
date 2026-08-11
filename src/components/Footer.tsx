@@ -87,12 +87,11 @@ export function Footer() {
                 <span className="text-gray-400 text-sm">contact@mihirbuilds.com</span>
               </li>
               <li className="flex items-start space-x-3">
-                <Phone size={18} className="text-[#14B8A6] mt-1 flex-shrink-0" />
-                <span className="text-gray-400 text-sm">+1 (555) 123-4567</span>
-              </li>
-              <li className="flex items-start space-x-3">
-                <MapPin size={18} className="text-[#14B8A6] mt-1 flex-shrink-0" />
-                <span className="text-gray-400 text-sm">123 Business Ave, Suite 100<br />San Francisco, CA 94102</span>
+                <span className="text-gray-400 text-sm">
+                  <Link href="/contact" className="text-[#14B8A6] hover:underline">
+                    Book a Free Demo &rarr;
+                  </Link>
+                </span>
               </li>
             </ul>
           </div>

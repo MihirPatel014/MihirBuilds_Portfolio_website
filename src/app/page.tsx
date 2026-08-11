@@ -25,8 +25,58 @@ import {
 import { ImageWithFallback } from '@/components/figma/ImageWithFallback';
 
 export default function Home() {
+  const schema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "name": "MihirBuilds | WhatsApp, Email & Workflow Automation",
+        "description": "MihirBuilds helps businesses automate WhatsApp, email, lead management and repetitive workflows with custom automation solutions.",
+        "url": "https://www.mihirbuilds.com",
+        "isPartOf": {
+          "@type": "WebSite",
+          "name": "MihirBuilds",
+          "alternateName": "Mihir Builds",
+          "url": "https://www.mihirbuilds.com"
+        }
+      },
+      {
+        "@type": "Organization",
+        "name": "MihirBuilds",
+        "url": "https://www.mihirbuilds.com",
+        "logo": "https://www.mihirbuilds.com/images/logo.png",
+        "description": "Premium Business Automation Services"
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is agency automation?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Agency automation involves using intelligent software to handle repetitive tasks, customer communications, and workflows. MihirBuilds helps businesses save up to 95% of their time and respond 10x faster."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does WhatsApp automation work?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "WhatsApp automation uses intelligent chatbots to engage customers instantly, handle inquiries 24/7, and integrate with your CRM."
+            }
+          }
+        ]
+      }
+    ]
+  };
+
   return (
     <div className="bg-[#F8FAFC]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
       {/* Hero Section */}
       <section className="relative min-h-[90vh] flex items-center overflow-hidden">
         {/* Background Gradient */}
@@ -51,19 +101,18 @@ export default function Home() {
                 className="inline-flex items-center space-x-2 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full mb-6 shadow-md"
               >
                 <Zap size={18} className="text-[#14B8A6]" />
-                <span className="text-sm font-medium text-[#0F172A]">Trusted by 500+ Businesses</span>
+                <span className="text-sm font-medium text-[#0F172A]">Built for businesses ready to automate repetitive work</span>
               </motion.div>
 
               <h1 className="text-3xl md:text-6xl lg:text-7xl font-bold text-[#0F172A] mb-6 leading-tight">
-                Automate Your Business
+                Business Automation Solutions for
                 <span className="block mt-2 bg-gradient-to-r from-[#2563EB] to-[#14B8A6] bg-clip-text text-transparent">
-                  Save Time & Scale Fast
+                  WhatsApp, Email & Workflows
                 </span>
               </h1>
 
               <p className="text-xl text-gray-700 mb-8 leading-relaxed max-w-xl">
-                Transform your customer communication and internal workflows with intelligent automation.
-                Never miss a lead, respond instantly, and focus on what matters most.
+                MihirBuilds helps businesses automate customer communication, lead management and repetitive workflows using intelligent automation solutions.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 mb-12">
