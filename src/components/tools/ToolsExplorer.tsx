@@ -30,6 +30,16 @@ import {
   CheckCircle2,
   Cpu,
   X,
+  Wrench,
+  QrCode,
+  Shield,
+  LayoutTemplate,
+  MessageCircle,
+  FileCheck,
+  Volume2,
+  Mail,
+  Type,
+  Globe,
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { TOOL_CATEGORIES, TOOLS, ToolItem } from '@/data/tools';
@@ -53,6 +63,16 @@ const iconMap: Record<string, React.ElementType> = {
   Sparkles,
   Code,
   MessageSquare,
+  Wrench,
+  QrCode,
+  Shield,
+  LayoutTemplate,
+  MessageCircle,
+  FileCheck,
+  Volume2,
+  Mail,
+  Type,
+  Globe,
 };
 
 export function ToolsExplorer() {
