@@ -146,7 +146,7 @@ export function JsonFormatterTool() {
       let keyCount = 0;
       let maxDepth = 0;
 
-      function traverse(obj: any, currentDepth = 1) {
+      const traverse = (obj: any, currentDepth = 1) => {
         if (currentDepth > maxDepth) maxDepth = currentDepth;
         if (obj && typeof obj === 'object') {
           if (Array.isArray(obj)) {
@@ -157,7 +157,7 @@ export function JsonFormatterTool() {
             keys.forEach((k) => traverse(obj[k], currentDepth + 1));
           }
         }
-      }
+      };
 
       traverse(parsed);
 
