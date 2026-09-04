@@ -5,27 +5,27 @@ export function Footer() {
   return (
     <footer className="bg-[#0F172A] text-white" >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
           {/* Company Info */}
-          <div className="space-y-4">
+          <div className="space-y-4 lg:col-span-1">
             <div className="flex items-center space-x-2">
-              <img src="/apple-touch-icon.png" alt="Logo" className="w-24 h-24 object-cover" style={{ borderRadius: "50%", backgroundColor: "whitesmoke" }} />
+              <img src="/apple-touch-icon.png" alt="Logo" className="w-16 h-16 object-cover rounded-xl bg-white p-1" />
+              <span className="text-2xl font-bold">MihirBuilds</span>
             </div>
-            <span className="text-2xl font-bold">MihirBuilds</span>
-          </div>
-          <p className="text-gray-400 text-sm leading-relaxed">
-            Automate your business processes with intelligent WhatsApp, Email, and Custom Workflow solutions.
-          </p>
-          <div className="flex space-x-4">
-            <a href="#" className="text-gray-400 hover:text-white transition-colors">
-              <Linkedin size={20} />
-            </a>
-            <a href="#" className="text-gray-400 hover:text-white transition-colors">
-              <Twitter size={20} />
-            </a>
-            <a href="#" className="text-gray-400 hover:text-white transition-colors">
-              <Facebook size={20} />
-            </a>
+            <p className="text-gray-400 text-sm leading-relaxed">
+              Automate your business processes with intelligent WhatsApp, Email, and Custom Workflow solutions.
+            </p>
+            <div className="flex space-x-4 pt-2">
+              <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                <Linkedin size={20} />
+              </a>
+              <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                <Twitter size={20} />
+              </a>
+              <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                <Facebook size={20} />
+              </a>
+            </div>
           </div>
 
 
@@ -46,6 +46,35 @@ export function Footer() {
               <li>
                 <Link href="/workflow-automation" className="text-gray-400 hover:text-white transition-colors text-sm">
                   Workflow Automation
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Free Tools */}
+          <div>
+            <h4 className="font-semibold text-lg mb-4">Free Tools</h4>
+            <ul className="space-y-3">
+              <li>
+                <Link href="/tools" className="text-gray-400 hover:text-white transition-colors text-sm flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
+                  All Online Tools
+                </Link>
+              </li>
+              <li>
+                <Link href="/tools/json-formatter" className="text-gray-400 hover:text-white transition-colors text-sm flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-teal-400"></span>
+                  JSON Formatter & Validator
+                </Link>
+              </li>
+              <li>
+                <Link href="/tools?category=developer-tools" className="text-gray-400 hover:text-white transition-colors text-sm">
+                  Developer Tools
+                </Link>
+              </li>
+              <li>
+                <Link href="/tools?category=pdf-tools" className="text-gray-400 hover:text-white transition-colors text-sm">
+                  PDF Tools
                 </Link>
               </li>
             </ul>
