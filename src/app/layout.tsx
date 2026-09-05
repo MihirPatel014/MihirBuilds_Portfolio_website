@@ -5,7 +5,8 @@ import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { BottomNav } from '@/components/BottomNav';
 import { Toaster } from 'sonner';
-
+import { Analytics } from "@vercel/analytics/react"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
