@@ -37,6 +37,9 @@ export const metadata: Metadata = {
     description: 'MihirBuilds helps businesses automate WhatsApp, email, lead management and repetitive workflows with custom automation solutions.',
     images: ['https://images.unsplash.com/photo-1768796372362-05c256e61d8c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMGF1dG9tYXRpb24lMjB0ZWNobm9sb2d5fGVufDF8fHx8MTc3MTg2MDA4NHww&ixlib=rb-4.1.0&q=80&w=1080'],
   },
+  other: {
+    'msvalidate.01': 'C82D3CD429C3402236487A7FC73F57D5',
+  },
   verification: {
     other: {
       'msvalidate.01': 'C82D3CD429C3402236487A7FC73F57D5',
@@ -51,6 +54,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <meta name="msvalidate.01" content="C82D3CD429C3402236487A7FC73F57D5" />
+      </head>
       <body className={inter.className}>
         <Navbar />
         {children}
