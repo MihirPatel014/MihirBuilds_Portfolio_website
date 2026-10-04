@@ -40,4 +40,12 @@ coverage/
 
 # TypeScript declaration files (if applicable)
 .tsbuildinfo
-#
+
+# Unlighthouse & Skills
+.unlighthouse/
+unlighthouse/
+.skills/
+.agents/
+skills-lock.json
+
+.codegraph/

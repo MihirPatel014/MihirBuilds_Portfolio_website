@@ -400,7 +400,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-[#0F172A] mb-1">Email Us</h3>
-                    <p className="text-gray-600">contact@mihirbuilds.com</p>
+                    <p className="text-gray-600">mihirbuilds@gmail.com</p>
                     <p className="text-sm text-gray-500">We'll respond within 24 hours</p>
                   </div>
                 </div>
@@ -411,8 +411,8 @@ export default function Contact() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-[#0F172A] mb-1">Business Hours</h3>
-                    <p className="text-gray-600">Monday - Friday: 9:00 AM - 6:00 PM</p>
-                    <p className="text-gray-600">Saturday - Sunday: Closed</p>
+                    <p className="text-gray-600">Monday - Sunday: 9:00 AM - 6:00 PM</p>
+                    
                   </div>
                 </div>
               </div>
@@ -442,217 +442,17 @@ export default function Contact() {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
             >
-              <div className="bg-white rounded-2xl p-5 md:p-8 shadow-xl border border-gray-100 overflow-hidden">
-                <h2 className="text-2xl md:text-3xl font-bold text-[#0F172A] mb-2">
-                  Book Your Free Demo
-                </h2>
-                <p className="text-gray-600 mb-8">
-                  Fill out the form below and we'll get back to you within 24 hours
-                </p>
-
-                {submitted ? (
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    className="bg-green-50 border-2 border-green-500 rounded-xl p-8 text-center"
-                  >
-                    <div className="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <Send size={32} className="text-white" />
-                    </div>
-                    <h3 className="text-2xl font-bold text-green-900 mb-2">Thank You!</h3>
-                    <p className="text-green-700">
-                      We've received your message and will get back to you shortly.
-                    </p>
-                  </motion.div>
-                ) : (
-                  <form onSubmit={handleSubmit} className="space-y-6">
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <div>
-                        <label htmlFor="name" className="block text-sm font-medium text-[#0F172A] mb-2">
-                          Full Name *
-                        </label>
-                        <input
-                          type="text"
-                          id="name"
-                          name="name"
-                          required
-                          value={formData.name}
-                          onChange={handleChange}
-                          className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-[#2563EB] focus:ring-2 focus:ring-[#2563EB]/20 outline-none transition-all"
-                          placeholder="John Doe"
-                        />
-                      </div>
-
-                      <div>
-                        <label htmlFor="email" className="block text-sm font-medium text-[#0F172A] mb-2">
-                          Email Address *
-                        </label>
-                        <input
-                          type="email"
-                          id="email"
-                          name="email"
-                          required
-                          value={formData.email}
-                          onChange={handleChange}
-                          className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-[#2563EB] focus:ring-2 focus:ring-[#2563EB]/20 outline-none transition-all"
-                          placeholder="john@company.com"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <div>
-                        <label htmlFor="company" className="block text-sm font-medium text-[#0F172A] mb-2">
-                          Company Name
-                        </label>
-                        <input
-                          type="text"
-                          id="company"
-                          name="company"
-                          value={formData.company}
-                          onChange={handleChange}
-                          className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-[#2563EB] focus:ring-2 focus:ring-[#2563EB]/20 outline-none transition-all"
-                          placeholder="Your Company"
-                        />
-                      </div>
-
-                      <div>
-                        <label htmlFor="phone" className="block text-sm font-medium text-[#0F172A] mb-2">
-                          Phone Number
-                        </label>
-                        <div className="relative flex space-x-1 md:space-x-2" ref={dropdownRef}>
-                          {/* Custom Country Code Dropdown */}
-                          <div className="relative">
-                            <button
-                              type="button"
-                              onClick={() => {
-                                setIsDropdownOpen(!isDropdownOpen);
-                                trigger('nudge');
-                              }}
-                              className="w-20 md:w-24 px-2 py-3 rounded-xl border border-gray-300 focus:border-[#2563EB] focus:ring-2 focus:ring-[#2563EB]/20 outline-none transition-all bg-white flex items-center justify-between"
-                            >
-                              <span className="flex items-center space-x-1">
-                                <span className="text-base md:text-lg">{selectedCountry.flag}</span>
-                                <span className="text-xs md:text-sm font-medium">{selectedCountry.code}</span>
-                              </span>
-                              <motion.span
-                                animate={{ rotate: isDropdownOpen ? 180 : 0 }}
-                                className="inline-block"
-                              >
-                                <ChevronDown size={16} className="text-gray-400" />
-                              </motion.span>
-                            </button>
-
-                            {isDropdownOpen && (
-                              <div className="absolute top-full left-0 mt-2 w-72 bg-white border border-gray-200 rounded-xl shadow-2xl z-50 overflow-hidden ring-1 ring-black/5">
-                                <div className="p-3 border-b border-gray-100 bg-gray-50 flex items-center space-x-2">
-                                  <Search size={14} className="text-gray-400" />
-                                  <input
-                                    type="text"
-                                    placeholder="Search country..."
-                                    value={countrySearchQuery}
-                                    onChange={(e) => setCountrySearchQuery(e.target.value)}
-                                    className="w-full bg-transparent border-none outline-none text-sm placeholder:text-gray-400"
-                                    autoFocus
-                                  />
-                                </div>
-                                <div className="max-h-60 overflow-y-auto">
-                                  {filteredCountries.length > 0 ? (
-                                    filteredCountries.map((item) => (
-                                      <button
-                                        key={`${item.country}-${item.code}-${item.name}`}
-                                        type="button"
-                                        onClick={() => {
-                                          setFormData(prev => ({ ...prev, countryCode: item.code }));
-                                          setIsDropdownOpen(false);
-                                          setCountrySearchQuery('');
-                                          trigger('nudge');
-                                        }}
-                                        className="w-full px-4 py-3 flex items-center justify-between hover:bg-blue-50 transition-colors border-b border-gray-50 last:border-0 text-left"
-                                      >
-                                        <div className="flex items-center space-x-3">
-                                          <span className="text-xl">{item.flag}</span>
-                                          <span className="text-sm text-gray-700 font-medium truncate max-w-[120px]">{item.name}</span>
-                                        </div>
-                                        <span className="text-xs font-bold text-blue-600">{item.code}</span>
-                                      </button>
-                                    ))
-                                  ) : (
-                                    <div className="px-4 py-3 text-sm text-gray-500 text-center italic">
-                                      No countries found
-                                    </div>
-                                  )}
-                                </div>
-                              </div>
-                            )}
-                          </div>
-
-                          <input
-                            type="tel"
-                            id="phone"
-                            name="phone"
-                            value={formData.phone}
-                            onChange={handleChange}
-                            className="flex-1 min-w-0 px-3 md:px-4 py-3 rounded-xl border border-gray-300 focus:border-[#2563EB] focus:ring-2 focus:ring-[#2563EB]/20 outline-none transition-all"
-                            placeholder="555-123-4567"
-                          />
-                        </div>
-                      </div>
-                    </div>
-
-                    <div>
-                      <label htmlFor="service" className="block text-sm font-medium text-[#0F172A] mb-2">
-                        Service Interested In *
-                      </label>
-                      <select
-                        id="service"
-                        name="service"
-                        required
-                        value={formData.service}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-[#2563EB] focus:ring-2 focus:ring-[#2563EB]/20 outline-none transition-all"
-                      >
-                        <option value="">Select a service...</option>
-                        <option value="whatsapp">WhatsApp Automation</option>
-                        <option value="email">Email Automation</option>
-                        <option value="workflow">Custom Workflow Automation</option>
-                        <option value="all">All Services</option>
-                        <option value="consultation">General Consultation</option>
-                      </select>
-                    </div>
-
-                    <div>
-                      <label htmlFor="message" className="block text-sm font-medium text-[#0F172A] mb-2">
-                        Message *
-                      </label>
-                      <textarea
-                        id="message"
-                        name="message"
-                        required
-                        value={formData.message}
-                        onChange={handleChange}
-                        rows={5}
-                        className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-[#2563EB] focus:ring-2 focus:ring-[#2563EB]/20 outline-none transition-all resize-none"
-                        placeholder="Tell us about your automation needs..."
-                      />
-                    </div>
-
-                    <Button
-                      type="submit"
-                      variant="primary"
-                      size="lg"
-                      className="w-full"
-                      disabled={isSubmitting}
-                    >
-                      <MessageSquare size={20} className="mr-2" />
-                      {isSubmitting ? 'Sending...' : 'Send Message'}
-                    </Button>
-
-                    <p className="text-sm text-gray-500 text-center">
-                      By submitting this form, you agree to our privacy policy and terms of service.
-                    </p>
-                  </form>
-                )}
+              <div className="bg-white rounded-2xl p-2 md:p-6 shadow-xl border border-gray-100 overflow-hidden min-h-[640px]">
+                <iframe
+                  src="https://forms.fillout.com/t/oau15jdzTvus"
+                  width="100%"
+                  height="650px"
+                  frameBorder="0"
+                  marginHeight={0}
+                  marginWidth={0}
+                  title="Book Your Free Demo"
+                  className="rounded-xl w-full border-0 min-h-[640px]"
+                />
               </div>
             </motion.div>
           </div>

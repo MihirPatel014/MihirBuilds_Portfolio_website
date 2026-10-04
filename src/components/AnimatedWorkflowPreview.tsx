@@ -1,3 +1,5 @@
+'use client';
+
 import { motion, AnimatePresence } from 'motion/react';
 import { useState, useEffect } from 'react';
 import { MessageCircle, Mail, Database, CheckCircle, User, Calendar } from 'lucide-react';

@@ -7,7 +7,7 @@ import { BottomNav } from '@/components/BottomNav';
 import { Toaster } from 'sonner';
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({ subsets: ['latin'], display: 'swap' });
 
 export const metadata: Metadata = {
   title: 'MihirBuilds | WhatsApp, Email & Workflow Automation',
