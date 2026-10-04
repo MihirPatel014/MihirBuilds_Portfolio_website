@@ -1,6 +1,6 @@
 'use client';
 
-import { Home, Workflow, Info, MessageSquare } from 'lucide-react';
+import { Home, Zap, Code2, Info, MessageSquare } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion } from 'motion/react';
@@ -12,46 +12,51 @@ export function BottomNav() {
 
   const navItems = [
     { name: 'Home', path: '/', icon: Home },
-    { name: 'Workflow', path: '/workflow-automation', icon: Workflow },
+    { name: 'Services', path: '/whatsapp-automation', icon: Zap },
+    { name: 'Tools', path: '/tools', icon: Code2 },
     { name: 'About', path: '/about', icon: Info },
     { name: 'Contact', path: '/contact', icon: MessageSquare },
   ];
 
   return (
-    <nav className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 lg:hidden px-4 w-full max-w-sm">
-      <div className="bg-white/70 backdrop-blur-xl border border-white/20 rounded-[2rem] shadow-[0_20px_50px_rgba(0,0,0,0.1)] px-6 py-3 flex items-center justify-between">
+    <nav className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 lg:hidden px-3 w-full max-w-md pointer-events-none">
+      <div className="pointer-events-auto bg-white/95 backdrop-blur-2xl border border-slate-200/90 rounded-full shadow-[0_12px_40px_rgba(15,23,42,0.18)] px-3 py-2 flex items-center justify-between">
         {navItems.map((item) => {
           const Icon = item.icon;
-          const isActive = pathname === item.path;
+          const isActive = item.path === '/' 
+            ? pathname === '/' 
+            : item.path === '/whatsapp-automation'
+            ? (pathname === '/whatsapp-automation' || pathname === '/email-automation' || pathname === '/workflow-automation')
+            : pathname?.startsWith(item.path);
 
           return (
             <Link
               key={item.path}
               href={item.path}
               onClick={() => trigger('nudge')}
-              className="relative flex flex-col items-center group"
+              className="relative flex-1 flex flex-col items-center justify-center py-1 group transition-all"
             >
-              <div className={`p-2 rounded-2xl transition-all duration-300 ${
+              {isActive && (
+                <motion.div
+                  layoutId="bottom-nav-active-indicator"
+                  className="absolute -top-1.5 w-1.5 h-1.5 bg-[#2563EB] rounded-full"
+                  transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                />
+              )}
+
+              <div className={`p-1.5 rounded-xl transition-all duration-200 flex items-center justify-center ${
                 isActive 
-                  ? 'bg-blue-100 text-blue-600 scale-110' 
-                  : 'text-gray-400 group-hover:text-blue-500 hover:bg-blue-50'
+                  ? 'bg-blue-50 text-[#2563EB]' 
+                  : 'text-slate-600 group-hover:text-slate-900 group-hover:bg-slate-100'
               }`}>
-                <Icon size={22} strokeWidth={isActive ? 2.5 : 2} />
+                <Icon size={20} strokeWidth={isActive ? 2.2 : 1.8} />
               </div>
               
-              <span className={`text-[10px] mt-1 font-bold tracking-tight transition-all duration-300 ${
-                isActive ? 'text-blue-600 opacity-100' : 'text-gray-400 opacity-0 group-hover:opacity-100'
+              <span className={`text-[10px] mt-0.5 font-semibold tracking-tight transition-colors duration-200 text-center ${
+                isActive ? 'text-[#2563EB]' : 'text-slate-600 group-hover:text-slate-900'
               }`}>
                 {item.name}
               </span>
-
-              {isActive && (
-                <motion.div
-                  layoutId="bottom-nav-active"
-                  className="absolute -top-1 w-1 h-1 bg-blue-600 rounded-full"
-                  transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-                />
-              )}
             </Link>
           );
         })}
