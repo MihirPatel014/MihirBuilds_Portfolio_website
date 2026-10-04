@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import { Mail, Phone, MapPin, Linkedin, Twitter, Facebook } from 'lucide-react';
+import { Mail, Phone, MapPin, Linkedin, Twitter, Facebook, ExternalLink } from 'lucide-react';
+import { BUSINESS, LOCATION_LABEL } from '@/data/site';
 
 export function Footer() {
   return (
@@ -113,7 +114,21 @@ export function Footer() {
             <ul className="space-y-3">
               <li className="flex items-start space-x-3">
                 <Mail size={18} className="text-[#14B8A6] mt-1 flex-shrink-0" />
-                <span className="text-gray-400 text-sm">contact@mihirbuilds.com</span>
+                <a href={`mailto:${BUSINESS.email}`} className="text-gray-400 hover:text-white transition-colors text-sm">
+                  {BUSINESS.email}
+                </a>
+              </li>
+              <li className="flex items-start space-x-3">
+                <MapPin size={18} className="text-[#14B8A6] mt-1 flex-shrink-0" />
+                <a
+                  href={BUSINESS.mapPlaceUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-400 hover:text-white transition-colors text-sm inline-flex items-center gap-1"
+                >
+                  {LOCATION_LABEL}
+                  <ExternalLink size={12} className="flex-shrink-0" />
+                </a>
               </li>
               <li className="flex items-start space-x-3">
                 <span className="text-gray-400 text-sm">

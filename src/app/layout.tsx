@@ -7,6 +7,8 @@ import { BottomNav } from '@/components/BottomNav';
 import { Toaster } from 'sonner';
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import { ORGANIZATION_SCHEMA } from '@/data/site';
+import { WhatsAppButton } from '@/components/WhatsAppButton';
 const inter = Inter({ subsets: ['latin'], display: 'swap' });
 
 export const metadata: Metadata = {
@@ -56,12 +58,17 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <meta name="msvalidate.01" content="C82D3CD429C3402236487A7FC73F57D5" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(ORGANIZATION_SCHEMA) }}
+        />
       </head>
       <body className={inter.className}>
         <Navbar />
         {children}
         <Footer />
         <BottomNav />
+        <WhatsAppButton />
         <Toaster position="bottom-right" richColors />
       </body>
     </html>

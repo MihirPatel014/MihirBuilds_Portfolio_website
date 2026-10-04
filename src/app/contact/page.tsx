@@ -2,7 +2,8 @@
 
 import { motion } from 'motion/react';
 import { Button } from '@/components/Button';
-import { Mail, Phone, MapPin, Clock, MessageSquare, Send, ChevronDown, Search } from 'lucide-react';
+import { Mail, Phone, MapPin, Clock, MessageSquare, Send, ChevronDown, Search, ExternalLink } from 'lucide-react';
+import { BUSINESS, LOCATION_LABEL } from '@/data/site';
 import { useState, useRef, useEffect } from 'react';
 import { useWebHaptics } from 'web-haptics/react';
 import { submitContactForm } from '@/app/actions/contact';
@@ -415,6 +416,26 @@ export default function Contact() {
                     
                   </div>
                 </div>
+
+                <div className="flex items-start space-x-4">
+                  <div className="w-12 h-12 bg-teal-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <MapPin size={24} className="text-[#14B8A6]" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-[#0F172A] mb-1">Our Location</h3>
+                    <p className="text-gray-600">{LOCATION_LABEL}</p>
+                    <p className="text-sm text-gray-500">Serving clients worldwide remotely</p>
+                    <a
+                      href={BUSINESS.mapDirectionsUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-sm text-[#2563EB] hover:underline mt-1"
+                    >
+                      Get directions
+                      <ExternalLink size={12} />
+                    </a>
+                  </div>
+                </div>
               </div>
 
               {/* Quick Stats */}
@@ -455,6 +476,59 @@ export default function Contact() {
                 />
               </div>
             </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Location Map Section */}
+      <section className="py-12 md:py-16 bg-[#F8FAFC] border-t border-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-10">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#0F172A] mb-4">
+              Based in {BUSINESS.address.locality}, {BUSINESS.address.region}
+            </h2>
+            <p className="text-lg text-gray-600 leading-relaxed">
+              Our base is in {LOCATION_LABEL}. We work remotely with clients across India and worldwide,
+              so timezone is never a barrier.
+            </p>
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="relative rounded-2xl overflow-hidden shadow-xl border border-gray-100 bg-white"
+          >
+            <iframe
+              src={BUSINESS.mapEmbedUrl}
+              width="100%"
+              height="420"
+              style={{ border: 0, display: 'block' }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title={`MihirBuilds location - ${LOCATION_LABEL}`}
+              className="w-full h-[320px] md:h-[420px]"
+            />
+          </motion.div>
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
+            <a
+              href={BUSINESS.mapDirectionsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#2563EB] text-white font-medium hover:bg-[#1D4ED8] transition-colors"
+            >
+              <MapPin size={18} />
+              Get Directions
+            </a>
+            <a
+              href={`mailto:${BUSINESS.email}`}
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-gray-300 text-[#0F172A] font-medium hover:border-[#2563EB] hover:text-[#2563EB] transition-colors"
+            >
+              <Mail size={18} />
+              Email Us
+            </a>
           </div>
         </div>
       </section>
